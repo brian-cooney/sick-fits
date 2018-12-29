@@ -1,8 +1,12 @@
-class Home extends React.Component {
-  state = {};
-  render() {
-    return <h1>Hett</h1>;
-  }
-}
+import Link from "next/link";
+
+const Home = props => (
+  <div>
+    <p>Hey!</p>
+    <Link href="/sell">
+      <a>Sell page!</a>
+    </Link>
+  </div>
+);
 
 export default Home;
