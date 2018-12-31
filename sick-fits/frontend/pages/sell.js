@@ -1,11 +1,8 @@
-import Link from "next/link";
+import CreateItem from "../components/CreateItem";
 
 const Sell = props => (
   <div>
-    <p>Sell page</p>
-    <Link href="/index">
-      <a>Home Page</a>
-    </Link>
+    <CreateItem />
   </div>
 );
 
