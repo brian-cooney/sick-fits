@@ -1,10 +1,9 @@
+const cookieParser = require("cookie-parser");
 require("dotenv").config({ path: "variables.env" });
 const createServer = require("./createServer");
 const db = require("./db");
 
-const server = createServer();
-
-// Todo add auth
+const server = createServer(cookieParser());
 
 server.start(
   {
