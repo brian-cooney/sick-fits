@@ -10,7 +10,6 @@ const Nav = () => (
         <Link href="/items">
           <a>Shop</a>
         </Link>
-        {console.log("me", me.email)}
         {me && (
           <>
             <Link href="/sell">
