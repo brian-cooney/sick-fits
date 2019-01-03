@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/brian-cooney-04a94c/sick-fits/dev
-# timestamp: Wed Jan 02 2019 15:39:18 GMT+0000 (Greenwich Mean Time)
+# timestamp: Thu Jan 03 2019 14:55:48 GMT+0000 (Greenwich Mean Time)
 
 type AggregateItem {
   count: Int!
@@ -418,7 +418,7 @@ type PageInfo {
   endCursor: String
 }
 
-enum Permissions {
+enum Permission {
   ADMIN
   USER
   ITEMCREATE
@@ -454,7 +454,7 @@ type User implements Node {
   password: String!
   resetToken: Float
   resetTokenExpiry: String
-  permissions: [Permissions!]!
+  permissions: [Permission!]!
 }
 
 """A connection to a list of items."""
@@ -477,7 +477,7 @@ input UserCreateInput {
 }
 
 input UserCreatepermissionsInput {
-  set: [Permissions!]
+  set: [Permission!]
 }
 
 """An edge in a connection."""
@@ -515,7 +515,7 @@ type UserPreviousValues {
   password: String!
   resetToken: Float
   resetTokenExpiry: String
-  permissions: [Permissions!]!
+  permissions: [Permission!]!
 }
 
 type UserSubscriptionPayload {
@@ -576,7 +576,7 @@ input UserUpdateManyMutationInput {
 }
 
 input UserUpdatepermissionsInput {
-  set: [Permissions!]
+  set: [Permission!]
 }
 
 input UserWhereInput {
