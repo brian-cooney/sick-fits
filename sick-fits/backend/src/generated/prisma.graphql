@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/brian-cooney-04a94c/sick-fits/dev
-# timestamp: Thu Jan 03 2019 16:10:28 GMT+0000 (Greenwich Mean Time)
+# timestamp: Sat Aug 17 2019 23:13:54 GMT+0100 (British Summer Time)
 
 type AggregateItem {
   count: Int!
@@ -14,9 +14,13 @@ type BatchPayload {
   count: Long!
 }
 
+scalar DateTime
+
 type Item implements Node {
   id: ID!
   title: String!
+  updatedAt: DateTime!
+  createdAt: DateTime!
   description: String!
   image: String
   largeImage: String
@@ -35,6 +39,7 @@ type ItemConnection {
 }
 
 input ItemCreateInput {
+  id: ID
   title: String!
   description: String!
   image: String
@@ -57,6 +62,10 @@ enum ItemOrderByInput {
   id_DESC
   title_ASC
   title_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
   description_ASC
   description_DESC
   image_ASC
@@ -65,15 +74,13 @@ enum ItemOrderByInput {
   largeImage_DESC
   price_ASC
   price_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-  createdAt_ASC
-  createdAt_DESC
 }
 
 type ItemPreviousValues {
   id: ID!
   title: String!
+  updatedAt: DateTime!
+  createdAt: DateTime!
   description: String!
   image: String
   largeImage: String
@@ -225,6 +232,50 @@ input ItemWhereInput {
 
   """All values not ending with the given string."""
   title_not_ends_with: String
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
   description: String
 
   """All values that are not equal to given value."""
@@ -454,6 +505,8 @@ type Subscription {
 type User implements Node {
   id: ID!
   name: String!
+  updatedAt: DateTime!
+  createdAt: DateTime!
   email: String!
   password: String!
   resetToken: String
@@ -472,6 +525,7 @@ type UserConnection {
 }
 
 input UserCreateInput {
+  id: ID
   name: String!
   email: String!
   password: String!
@@ -503,6 +557,10 @@ enum UserOrderByInput {
   id_DESC
   name_ASC
   name_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
   email_ASC
   email_DESC
   password_ASC
@@ -511,15 +569,13 @@ enum UserOrderByInput {
   resetToken_DESC
   resetTokenExpiry_ASC
   resetTokenExpiry_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-  createdAt_ASC
-  createdAt_DESC
 }
 
 type UserPreviousValues {
   id: ID!
   name: String!
+  updatedAt: DateTime!
+  createdAt: DateTime!
   email: String!
   password: String!
   resetToken: String
@@ -698,6 +754,50 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   name_not_ends_with: String
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
   email: String
 
   """All values that are not equal to given value."""
@@ -862,5 +962,4 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
-  email: String
 }
